@@ -1,0 +1,18 @@
+{
+  "name": "cold-crow-memorize-rldx7",
+  "productName": "cold-crow-memorize-rldx7",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "diego",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "sqlite3": "5.1.7"
+  },
+  "devDependencies": {
+    "electron": "33.3.0"
+  }
+}
