@@ -1,7 +1,11 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+session_start([
+    'cookie_lifetime' => 86400, // 1 día
+    'cookie_secure' => true,   // Solo enviar cookies en conexiones HTTPS
+    'cookie_httponly' => true, // Evitar acceso a cookies desde JavaScript
+]);
 
-session_start();
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // Configuración del cliente OAuth 2.0
 $client = new Google_Client();
@@ -13,48 +17,68 @@ $client->setAccessType('offline'); // Permite obtener un refresh_token
 $client->setApprovalPrompt('force'); // Fuerza la pantalla de consentimiento
 
 // Conexión a la base de datos
-$mysqli = new mysqli('localhost', 'root', '', 'app1');
-if ($mysqli->connect_error) {
-    die('Error de conexión a la base de datos: ' . $mysqli->connect_error);
+try {
+    $mysqli = new mysqli('localhost', 'root', '', 'app1');
+    if ($mysqli->connect_error) {
+        throw new Exception('Error de conexión a la base de datos: ' . $mysqli->connect_error);
+    }
+} catch (Exception $e) {
+    logError($e->getMessage());
+    exit('Error interno. Por favor, intente más tarde.');
+}
+
+function guardarUsuario($mysqli, $googleId, $nombre, $email, $accessToken, $refreshToken, $tokenExpiry) {
+    $stmt = $mysqli->prepare("INSERT INTO usuarios (google_id, nombre, email, access_token, refresh_token, token_expiry)
+                              VALUES (?, ?, ?, ?, ?, ?)
+                              ON DUPLICATE KEY UPDATE 
+                                  nombre = VALUES(nombre), 
+                                  email = VALUES(email), 
+                                  access_token = VALUES(access_token), 
+                                  refresh_token = IF(VALUES(refresh_token) != '', VALUES(refresh_token), refresh_token), 
+                                  token_expiry = VALUES(token_expiry)");
+    $stmt->bind_param('ssssss', $googleId, $nombre, $email, $accessToken, $refreshToken, $tokenExpiry);
+    return $stmt->execute();
+}
+
+function logError($message) {
+    error_log($message, 3, __DIR__ . '/error.log');
+}
+
+function redirigir($url) {
+    header("Location: $url");
+    exit();
 }
 
 // Manejo del flujo OAuth
 if (isset($_GET['code'])) {
-    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    if (isset($token['error'])) {
-        echo 'Error al obtener el token: ' . htmlspecialchars($token['error']);
-        exit();
-    }
+    try {
+        $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+        if (isset($token['error'])) {
+            throw new Exception('Error al obtener el token: ' . $token['error']);
+        }
 
-    // Guardar tokens en la sesión
-    $_SESSION['access_token'] = $token;
+        $_SESSION['access_token'] = $token;
+        $client->setAccessToken($token);
 
-    // Obtener información del usuario
-    $client->setAccessToken($token);
-    $oauth2 = new Google_Service_Oauth2($client);
-    $userInfo = $oauth2->userinfo->get();
+        $oauth2 = new Google_Service_Oauth2($client);
+        $userInfo = $oauth2->userinfo->get();
 
-    // Guardar la información del usuario y los tokens en la base de datos
-    $googleId = $mysqli->real_escape_string($userInfo->id);
-    $nombre = $mysqli->real_escape_string($userInfo->name);
-    $email = $mysqli->real_escape_string($userInfo->email);
-    $accessToken = $mysqli->real_escape_string($token['access_token']);
-    $refreshToken = isset($token['refresh_token']) ? $mysqli->real_escape_string($token['refresh_token']) : null;
-    $tokenExpiry = date('Y-m-d H:i:s', time() + $token['expires_in']);
+        if (empty($userInfo->id) || empty($userInfo->email)) {
+            throw new Exception('Información del usuario incompleta.');
+        }
 
-    $query = "INSERT INTO usuarios (google_id, nombre, email, access_token, refresh_token, token_expiry)
-              VALUES ('$googleId', '$nombre', '$email', '$accessToken', '$refreshToken', '$tokenExpiry')
-              ON DUPLICATE KEY UPDATE 
-                  nombre='$nombre', 
-                  email='$email', 
-                  access_token='$accessToken', 
-                  refresh_token=IF('$refreshToken' != '', '$refreshToken', refresh_token), 
-                  token_expiry='$tokenExpiry'";
-    if ($mysqli->query($query) === TRUE) {
-        header('Location: inicio.php');
-        exit();
-    } else {
-        echo 'Error al guardar los datos del usuario: ' . $mysqli->error;
+        $googleId = $userInfo->id;
+        $nombre = $userInfo->name;
+        $email = $userInfo->email;
+        $accessToken = $token['access_token'];
+        $refreshToken = $token['refresh_token'] ?? null;
+        $tokenExpiry = date('Y-m-d H:i:s', time() + $token['expires_in']);
+
+        guardarUsuario($mysqli, $googleId, $nombre, $email, $accessToken, $refreshToken, $tokenExpiry);
+        redirigir('inicio.php');
+    } catch (Exception $e) {
+        logError($e->getMessage());
+        exit('Error durante la autenticación.');
     }
 }
 
@@ -65,11 +89,14 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     // Verificar si el token ha expirado
     if ($client->isAccessTokenExpired()) {
         // Renovar el token usando el refresh_token
-        $query = "SELECT refresh_token FROM usuarios WHERE google_id = (SELECT google_id FROM usuarios LIMIT 1)";
+        $query = "SELECT refresh_token FROM usuarios LIMIT 1";
         $result = $mysqli->query($query);
         if ($result && $row = $result->fetch_assoc()) {
             $refreshToken = $row['refresh_token'];
-            $client->fetchAccessTokenWithRefreshToken($refreshToken);
+            if (!$client->fetchAccessTokenWithRefreshToken($refreshToken)) {
+                unset($_SESSION['access_token']);
+                redirigir('inicio.php');
+            }
 
             // Actualizar el token en la base de datos
             $newAccessToken = $client->getAccessToken()['access_token'];
@@ -78,8 +105,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
             $mysqli->query($updateQuery);
         } else {
             unset($_SESSION['access_token']);
-            header('Location: inicio.php');
-            exit();
+            redirigir('inicio.php');
         }
     }
 
