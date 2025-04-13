@@ -1,4 +1,5 @@
 <?php
+echo "Hola Mundo!";
 session_start([
     'cookie_lifetime' => 86400, // 1 día
     'cookie_secure' => true,   // Solo enviar cookies en conexiones HTTPS
