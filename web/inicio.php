@@ -141,7 +141,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         $result = $mysqli->query($query);
         if ($result && $row = $result->fetch_assoc()) {
             $refreshToken = $row['refresh_token'];
-            if (!$client->fetchAccessTokenWithRefreshToken($refreshToken)) {
+            if (empty($refreshToken) || !$client->fetchAccessTokenWithRefreshToken($refreshToken)) {
+                logError('Error al renovar el token de acceso: Refresh token inválido o expirado.');
                 unset($_SESSION['access_token']);
                 redirigir('inicio.php');
             }
@@ -149,7 +150,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
             // Actualizar el token en la base de datos
             $newAccessToken = $client->getAccessToken()['access_token'];
             $newTokenExpiry = date('Y-m-d H:i:s', time() + $client->getAccessToken()['expires_in']);
-            $updateQuery = "UPDATE usuarios SET access_token='$newAccessToken', token_expiry='$newTokenExpiry' WHERE refresh_token='$refreshToken'";
+            if (!$mysqli->query($updateQuery)) {
+                logError('Error al actualizar el token en la base de datos: ' . $mysqli->error);
+            }
             $mysqli->query($updateQuery);
         } else {
             unset($_SESSION['access_token']);
