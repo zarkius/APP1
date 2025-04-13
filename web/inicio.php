@@ -1,3 +1,51 @@
+/**
+ * This script handles Google OAuth 2.0 authentication and user management for a PHP application.
+ * 
+ * Key functionalities:
+ * - Configures the Google OAuth 2.0 client with credentials, redirect URI, and required scopes.
+ * - Establishes a connection to a MySQL database for storing user information and tokens.
+ * - Manages the OAuth flow, including handling authorization codes and exchanging them for access tokens.
+ * - Saves user information and tokens in the database, updating them if the user already exists.
+ * - Verifies if the user is already authenticated and handles token expiration by refreshing tokens.
+ * - Displays user information if authenticated or provides a link to initiate the Google login process.
+ * 
+ * Main sections:
+ * 1. OAuth Client Configuration:
+ *    - Sets up the Google_Client with credentials, redirect URI, and scopes for email and profile access.
+ * 
+ * 2. Database Connection:
+ *    - Connects to a MySQL database to store and retrieve user data and tokens.
+ * 
+ * 3. OAuth Flow Handling:
+ *    - Handles the exchange of authorization codes for access tokens.
+ *    - Saves user information (Google ID, name, email) and tokens (access token, refresh token, expiry) in the database.
+ *    - Updates existing user records if the user already exists.
+ * 
+ * 4. Token Management:
+ *    - Checks if the user is already authenticated by verifying the session.
+ *    - Handles token expiration by refreshing the token using the stored refresh token.
+ *    - Updates the database with the new access token and expiry time.
+ * 
+ * 5. User Information Display:
+ *    - Retrieves and displays the authenticated user's name and email.
+ *    - Provides a logout link for the user to end the session.
+ * 
+ * 6. Login Link:
+ *    - Generates and displays a Google login URL for users who are not authenticated.
+ * 
+ * Error Handling:
+ * - Handles database connection errors and displays appropriate error messages.
+ * - Handles token retrieval errors and displays error messages if the OAuth flow fails.
+ * 
+ * Dependencies:
+ * - Google API PHP Client Library (autoloaded via Composer).
+ * - MySQL database for storing user data and tokens.
+ * 
+ * Note:
+ * - Ensure that the `credentials.json` file is correctly configured with your Google API credentials.
+ * - Update the redirect URI to match your application's URL.
+ * - Secure sensitive data such as database credentials and tokens.
+ */
 <?php
 session_start([
     'cookie_lifetime' => 86400, // 1 día
@@ -93,7 +141,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         $result = $mysqli->query($query);
         if ($result && $row = $result->fetch_assoc()) {
             $refreshToken = $row['refresh_token'];
-            if (!$client->fetchAccessTokenWithRefreshToken($refreshToken)) {
+            if (empty($refreshToken) || !$client->fetchAccessTokenWithRefreshToken($refreshToken)) {
+                logError('Error al renovar el token de acceso: Refresh token inválido o expirado.');
                 unset($_SESSION['access_token']);
                 redirigir('inicio.php');
             }
@@ -101,7 +150,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
             // Actualizar el token en la base de datos
             $newAccessToken = $client->getAccessToken()['access_token'];
             $newTokenExpiry = date('Y-m-d H:i:s', time() + $client->getAccessToken()['expires_in']);
-            $updateQuery = "UPDATE usuarios SET access_token='$newAccessToken', token_expiry='$newTokenExpiry' WHERE refresh_token='$refreshToken'";
+            if (!$mysqli->query($updateQuery)) {
+                logError('Error al actualizar el token en la base de datos: ' . $mysqli->error);
+            }
             $mysqli->query($updateQuery);
         } else {
             unset($_SESSION['access_token']);
