@@ -6,7 +6,7 @@ session_start();
 // Configuración del cliente OAuth 2.0
 $client = new Google_Client();
 $client->setAuthConfig(__DIR__ . '/credentials.json');
-$client->setRedirectUri('http://localhost/google-api-php-client/web/inicio.php');
+$client->setRedirectUri('http://yposteriormente.com/google-api-php-client/web/inicio.php');
 $client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
 $client->addScope(Google_Service_Oauth2::USERINFO_PROFILE);
 $client->setAccessType('offline'); // Permite obtener un refresh_token
