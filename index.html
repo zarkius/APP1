@@ -33,7 +33,7 @@
           console.log("Token ID codificado (JWT): " + response.credential);
 
           // Enviar el token al servidor para validación
-          fetch('http://localhost/google-api-php-client/web/inicio.php', {
+          fetch('https://yposteriormente.com/oauth/callback.php', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
