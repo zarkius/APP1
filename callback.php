@@ -30,6 +30,7 @@ if (isset($_GET['code'])) {
         'picture' => $userInfo->picture,
     ];
 
+    
     // Redirigir al usuario a la página principal
     header('Location: profile.php');
     exit();
