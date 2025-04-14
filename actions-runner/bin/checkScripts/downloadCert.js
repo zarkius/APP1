@@ -10,7 +10,7 @@ const proxyPort = process.env['PROXYPORT'] || ''
 const proxyUsername = process.env['PROXYUSERNAME'] || ''
 const proxyPassword = process.env['PROXYPASSWORD'] || ''
 
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
+// Ensure certificate validation is enabled
 
 if (proxyHost === '') {
     const options = {
