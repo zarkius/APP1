@@ -5,7 +5,7 @@ session_start();
 
 $client = new Google_Client();
 $client->setAuthConfig(__DIR__ . '/credentials.json');
-$client->setRedirectUri('http://localhost/google-api-php-client/web/callback.php');
+$client->setRedirectUri('https://yposteriormente.com/callback.php');
 $client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
 $client->addScope(Google_Service_Oauth2::USERINFO_PROFILE);
 
