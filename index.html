@@ -1,2 +1,19 @@
-hola desde xxx
-K BIEN
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de llamada</title>
+</head>
+<body>
+    <h1>Hola desde xxx</h1>
+    <p>
+        <?php
+        require_once __DIR__ . '/Api.php'; // Asegúrate de que la ruta sea correcta
+        use APP1\Api;
+
+        echo Api::callableFunction();
+        ?>
+    </p>
+</body>
+</html>
