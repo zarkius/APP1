@@ -1,0 +1,194 @@
+[2025-04-14 10:30:11Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'Runner': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.runner'
+[2025-04-14 10:30:11Z INFO Listener] Runner is built for Windows (X64) - win-x64.
+[2025-04-14 10:30:11Z INFO Listener] RuntimeInformation: Microsoft Windows 10.0.22631.
+[2025-04-14 10:30:11Z INFO Listener] Version: 2.323.0
+[2025-04-14 10:30:11Z INFO Listener] Commit: d8b82f44a9ec0258904d5869ae683c31d5aac299
+[2025-04-14 10:30:11Z INFO Listener] Culture: es-ES
+[2025-04-14 10:30:11Z INFO Listener] UI Culture: es-ES
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO Listener] Validating directory permissions for: 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO CommandLineParser] Parse
+[2025-04-14 10:30:11Z INFO CommandLineParser] Parsing 5 args
+[2025-04-14 10:30:11Z INFO CommandLineParser] parsing argument
+[2025-04-14 10:30:11Z INFO CommandLineParser] HasArgs: False
+[2025-04-14 10:30:11Z INFO CommandLineParser] Adding Command: configure
+[2025-04-14 10:30:11Z INFO CommandLineParser] parsing argument
+[2025-04-14 10:30:11Z INFO CommandLineParser] HasArgs: True
+[2025-04-14 10:30:11Z INFO CommandLineParser] arg: url
+[2025-04-14 10:30:11Z INFO CommandLineParser] parsing argument
+[2025-04-14 10:30:11Z INFO CommandLineParser] HasArgs: True
+[2025-04-14 10:30:11Z INFO CommandLineParser] Adding option 'url': 'https://github.com/zarkius/APP1'
+[2025-04-14 10:30:11Z INFO CommandLineParser] parsing argument
+[2025-04-14 10:30:11Z INFO CommandLineParser] HasArgs: True
+[2025-04-14 10:30:11Z INFO CommandLineParser] arg: token
+[2025-04-14 10:30:11Z INFO CommandLineParser] parsing argument
+[2025-04-14 10:30:11Z INFO CommandLineParser] HasArgs: True
+[2025-04-14 10:30:11Z INFO CommandLineParser] Adding option 'token': '***'
+[2025-04-14 10:30:11Z INFO Listener] Arguments parsed
+[2025-04-14 10:30:11Z INFO Runner] ExecuteCommand
+[2025-04-14 10:30:11Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin\Runner.Listener.dll
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] binPath: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] RootFolder: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'Runner': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.runner'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] ConfigFilePath: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.runner
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.runner_migrated'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] MigratedConfigFilePath: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.runner_migrated
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] CredFilePath: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_migrated'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_migrated
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:11Z INFO HostContext] Well known config file 'Service': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.service'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.service
+[2025-04-14 10:30:11Z INFO CommandSettings] Flag 'help': 'False'
+[2025-04-14 10:30:11Z INFO CommandSettings] Flag 'version': 'False'
+[2025-04-14 10:30:11Z INFO CommandSettings] Flag 'commit': 'False'
+[2025-04-14 10:30:11Z INFO CommandSettings] Flag 'check': 'False'
+[2025-04-14 10:30:11Z INFO CommandSettings] Command 'configure': 'True'
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: --------------------------------------------------------------------------------
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |        ____ _ _   _   _       _          _        _   _                      |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |       / ___(_) |_| | | |_   _| |__      / \   ___| |_(_) ___  _ __  ___      |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |      | |  _| | __| |_| | | | | '_ \    / _ \ / __| __| |/ _ \| '_ \/ __|     |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |      | |_| | | |_|  _  | |_| | |_) |  / ___ \ (__| |_| | (_) | | | \__ \     |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |       \____|_|\__|_| |_|\__,_|_.__/  /_/   \_\___|\__|_|\___/|_| |_|___/     |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |                                                                              |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE: |                       
+[2025-04-14 10:30:11Z INFO Terminal] WRITE: Self-hosted runner registration
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE:                         |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: |                                                                              |
+[2025-04-14 10:30:11Z INFO Terminal] WRITE LINE: --------------------------------------------------------------------------------
+[2025-04-14 10:30:11Z INFO ConfigurationManager] ConfigureAsync
+[2025-04-14 10:30:11Z INFO CommandSettings] Flag 'generateServiceConfig': 'False'
+[2025-04-14 10:30:11Z INFO ConfigurationStore] IsConfigured()
+[2025-04-14 10:30:11Z INFO ConfigurationStore] IsConfigured: False
+[2025-04-14 10:30:11Z INFO ConfigurationManager] Is configured: False
+[2025-04-14 10:30:11Z INFO CommandSettings] Arg 'url': 'https://github.com/zarkius/APP1'
+[2025-04-14 10:30:11Z INFO CommandSettings] Remove url from Arg dictionary.
+[2025-04-14 10:30:11Z INFO CommandSettings] Arg 'token': '***'
+[2025-04-14 10:30:11Z INFO CommandSettings] Remove token from Arg dictionary.
+[2025-04-14 10:30:13Z INFO ConfigurationManager] Http response code: OK from 'POST https://api.github.com/actions/runner-registration' (5465:6C120:34E9B89:36C6C69:67FCE3B3)
+[2025-04-14 10:30:13Z INFO ConfigurationManager] Using V2 flow: False
+[2025-04-14 10:30:13Z INFO ConfigurationManager] cred retrieved via GitHub auth
+[2025-04-14 10:30:13Z INFO RunnerServer] EstablishVssConnection
+[2025-04-14 10:30:13Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2025-04-14 10:30:13Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-04-14 10:30:13Z INFO RunnerServer] EstablishVssConnection
+[2025-04-14 10:30:13Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-04-14 10:30:13Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-04-14 10:30:13Z INFO RunnerServer] EstablishVssConnection
+[2025-04-14 10:30:13Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-04-14 10:30:13Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-04-14 10:30:14Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-04-14 10:30:14Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-04-14 10:30:14Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-04-14 10:30:14Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:14Z INFO ConfigurationManager] Test Connection complete.
+[2025-04-14 10:30:14Z INFO HostContext] Well known directory 'Bin': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\bin'
+[2025-04-14 10:30:14Z INFO HostContext] Well known directory 'Root': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner'
+[2025-04-14 10:30:14Z INFO HostContext] Well known config file 'RSACredentials': 'C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_rsaparams'
+[2025-04-14 10:30:14Z INFO RSAEncryptedFileKeyManager] Creating new RSA key using 2048-bit key length
+[2025-04-14 10:30:14Z INFO RSAEncryptedFileKeyManager] Successfully saved RSA key parameters to file C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_rsaparams
+[2025-04-14 10:30:14Z INFO CommandSettings] Arg 'runnergroup': ''
+[2025-04-14 10:30:14Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-04-14 10:30:14Z INFO PromptManager] ReadValue
+[2025-04-14 10:30:14Z INFO Terminal] WRITE: Enter the name of the runner group to add this runner to: 
+[2025-04-14 10:30:14Z INFO Terminal] WRITE: [press Enter for Default] 
+[2025-04-14 10:30:14Z INFO Terminal] READ LINE
+[2025-04-14 10:30:16Z INFO Terminal] Read value: ''
+[2025-04-14 10:30:16Z INFO PromptManager] Falling back to the default: 'Default'
+[2025-04-14 10:30:16Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:16Z INFO ConfigurationManager] Found a self-hosted runner group with id 1 and name Default
+[2025-04-14 10:30:16Z INFO CommandSettings] Flag 'disableupdate': 'False'
+[2025-04-14 10:30:16Z INFO CommandSettings] Flag 'ephemeral': 'False'
+[2025-04-14 10:30:16Z INFO CommandSettings] Arg 'name': ''
+[2025-04-14 10:30:16Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-04-14 10:30:16Z INFO PromptManager] ReadValue
+[2025-04-14 10:30:16Z INFO Terminal] WRITE: Enter the name of runner: 
+[2025-04-14 10:30:16Z INFO Terminal] WRITE: [press Enter for Z] 
+[2025-04-14 10:30:16Z INFO Terminal] READ LINE
+[2025-04-14 10:30:18Z INFO Terminal] Read value: ''
+[2025-04-14 10:30:18Z INFO PromptManager] Falling back to the default: 'Z'
+[2025-04-14 10:30:18Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:18Z INFO CommandSettings] Arg 'labels': ''
+[2025-04-14 10:30:18Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-04-14 10:30:18Z INFO PromptManager] ReadValue
+[2025-04-14 10:30:18Z INFO Terminal] WRITE: This runner will have the following labels: 'self-hosted', 'Windows', 'X64' 
+Enter any additional labels (ex. label-1,label-2): 
+[2025-04-14 10:30:18Z INFO Terminal] WRITE: [press Enter to skip] 
+[2025-04-14 10:30:18Z INFO Terminal] READ LINE
+[2025-04-14 10:30:25Z INFO Terminal] Read value: ''
+[2025-04-14 10:30:25Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:25Z INFO CommandSettings] Flag 'disableupdate': 'False'
+[2025-04-14 10:30:25Z INFO CommandSettings] Flag 'no-default-labels': 'False'
+[2025-04-14 10:30:25Z INFO CommandSettings] Flag 'disableupdate': 'False'
+[2025-04-14 10:30:25Z INFO CommandSettings] Flag 'ephemeral': 'False'
+[2025-04-14 10:30:25Z INFO ConfigurationStore] Saving OAuth credential @ C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials
+[2025-04-14 10:30:25Z INFO ConfigurationStore] Credentials Saved.
+[2025-04-14 10:30:25Z INFO ConfigurationStore] HasCredentials()
+[2025-04-14 10:30:25Z INFO ConfigurationStore] stored True
+[2025-04-14 10:30:25Z INFO CredentialManager] GetCredentialProvider
+[2025-04-14 10:30:25Z INFO CredentialManager] Creating type OAuth
+[2025-04-14 10:30:25Z INFO CredentialManager] Creating credential type: OAuth
+[2025-04-14 10:30:25Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_rsaparams
+[2025-04-14 10:30:25Z INFO RunnerServer] EstablishVssConnection
+[2025-04-14 10:30:25Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2025-04-14 10:30:25Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-04-14 10:30:25Z INFO RunnerServer] EstablishVssConnection
+[2025-04-14 10:30:25Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-04-14 10:30:25Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-04-14 10:30:25Z INFO RunnerServer] EstablishVssConnection
+[2025-04-14 10:30:25Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-04-14 10:30:25Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-04-14 10:30:25Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-04-14 10:30:26Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-04-14 10:30:26Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-04-14 10:30:26Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_rsaparams
+[2025-04-14 10:30:26Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\diego\OneDrive\Desktop\NAMESPACE\PHP\APP1\actions-runner\.credentials_rsaparams
+[2025-04-14 10:30:26Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown
+[2025-04-14 10:30:26Z INFO CommandSettings] Arg 'work': ''
+[2025-04-14 10:30:26Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-04-14 10:30:26Z INFO PromptManager] ReadValue
+[2025-04-14 10:30:26Z INFO Terminal] WRITE: Enter name of work folder: 
+[2025-04-14 10:30:26Z INFO Terminal] WRITE: [press Enter for _work] 
+[2025-04-14 10:30:26Z INFO Terminal] READ LINE
+[2025-04-14 10:30:33Z INFO Terminal] Read value: ''
+[2025-04-14 10:30:33Z INFO PromptManager] Falling back to the default: '_work'
+[2025-04-14 10:30:33Z INFO ConfigurationStore] Saving runner settings.
+[2025-04-14 10:30:33Z INFO ConfigurationStore] Settings Saved.
+[2025-04-14 10:30:33Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:33Z INFO Terminal] WRITE LINE: 
+[2025-04-14 10:30:33Z INFO CommandSettings] Flag 'runasservice': 'False'
+[2025-04-14 10:30:33Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-04-14 10:30:33Z INFO PromptManager] ReadValue
+[2025-04-14 10:30:33Z INFO Terminal] WRITE: Would you like to run the runner as service? (Y/N) 
+[2025-04-14 10:30:33Z INFO Terminal] WRITE: [press Enter for N] 
+[2025-04-14 10:30:33Z INFO Terminal] READ LINE
+[2025-04-14 10:30:36Z INFO Terminal] Read value: 'Y'
+[2025-04-14 10:30:36Z INFO ConfigurationManager] Configuring to run the agent as service
+[2025-04-14 10:30:36Z ERR  WindowsServiceControlManager] Needs Administrator privileges for configure runner as windows service.
+[2025-04-14 10:30:36Z ERR  Runner] System.Security.SecurityException: Needs Administrator privileges for configuring runner as windows service.
+   at GitHub.Runner.Listener.Configuration.WindowsServiceControlManager.ConfigureService(RunnerSettings settings, CommandSettings command)
+   at GitHub.Runner.Listener.Configuration.ConfigurationManager.ConfigureAsync(CommandSettings command)
+   at GitHub.Runner.Listener.Runner.ExecuteCommand(CommandSettings command)
+[2025-04-14 10:30:36Z ERR  Terminal] WRITE ERROR: Needs Administrator privileges for configuring runner as windows service.
+[2025-04-14 10:30:36Z INFO Listener] Runner execution has finished with return code 1
