@@ -14,12 +14,17 @@ $client->addScope(Google_Service_Oauth2::USERINFO_PROFILE);
 
 $authUrl = $client->createAuthUrl();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Ubuntu', sans-serif;
+      }
+    </style>
     <title>Inicio de Sesión con Google</title>
     <?php
     // Configuración de la política de seguridad de contenido (CSP)
@@ -27,14 +32,75 @@ $authUrl = $client->createAuthUrl();
     ?>
   </head>
   <body>
-    <header>
-      <h1>Inicio de Sesión con Google</h1>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background-color: #f4f4f4; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <div style="flex: 1;">
+      <img src="assets/img/banner.jpeg" alt="Banner de la página" style="width: 100%; height: 300px;" />
+      </div>
+      <aside style="flex: 0 0 20%; padding: 10px; background-color: #f4f4f4; height: 280px; box-shadow: 2px 0 5px rgba(0,0,0,0.1);">
+      <nav>
+        <ul style="list-style-type: none; padding: 0; margin: 0; text-align: center;">
+        <li><a href="#" style="text-decoration: none; color: #333;">Inicio</a></li>
+        <li><a href="#" style="text-decoration: none; color: #333;">Cursos</a></li>
+        <br>
+        <li>
+          <a href="<?php echo htmlspecialchars($authUrl); ?>" style="text-decoration: none;">
+          <button style="background-color: #4285F4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+            Iniciar sesión con Google
+          </button>
+          </a>
+        </li>
+        </ul>
+      </nav>
+      </aside>
     </header>
     <main>
-      <a href="<?php echo htmlspecialchars($authUrl); ?>">Iniciar sesión con Google</a>
+        <!-- Contenido dinámico Principal -->
+      <h2 style="text-align: center">Nuestros cursos:</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 1</h3>
+          <p>Contenido de la primera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 2</h3>
+          <p>Contenido de la segunda vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 3</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 4</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 5</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 6</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 7</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 8</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+          <h3>Vista 9</h3>
+          <p>Contenido de la tercera vista.</p>
+        </div>
+      </div>
+    </div>
     </main>
     <footer>
-      <p>© 2025 Ejemplo de Inicio de Sesión con Google</p>
+    <p style="text-align: center; padding: 10px; background-color: #f4f4f4; margin: 0;">
+      &copy; <?php echo date("Y-m-d"); ?> Aula Virtual. Todos los derechos reservados. | <a href="/privacidad.php">Privacidad</a> | <a href="#">Contacto</a>
+
+    </p>
     </footer>
   </body>
 </html>
