@@ -30,9 +30,10 @@ if (isset($_GET['code'])) {
         'picture' => $userInfo->picture,
     ];
 
-    
+    // Aquí puedes guardar la información del usuario en tu base de datos si es necesario
+    // Por ejemplo, puedes usar PDO para insertar o actualizar la información del usuario en tu base de datos
     // Redirigir al usuario a la página principal
-    header('Location: index.php');
+    header('Location: profile.php');
     exit();
 }
 ?>

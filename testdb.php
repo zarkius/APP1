@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 $host = 'localhost';
 $dbname = 'app1';
-$username = 'InsertData';
+$username = 'insertData';
 $password = '11211121aA.,';
 
 try {
