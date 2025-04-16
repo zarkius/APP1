@@ -28,10 +28,12 @@ $authUrl = $client->createAuthUrl();
     <title>Inicio de Sesión con Google</title>
     <?php
     // Configuración de la política de seguridad de contenido (CSP)
-    header("Content-Security-Policy: script-src 'self' https://accounts.google.com https://www.gstatic.com; object-src 'none';");
+    header("Content-Security-Policy: script-src 'self' https://accounts.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com; object-src 'none';");
     ?>
   </head>
   <body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1801340051704618"
+  crossorigin="anonymous"></script>
     <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background-color: #f4f4f4; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
       <div style="flex: 1;">
       <img src="assets/img/banner.jpeg" alt="Banner de la página" style="width: 100%; height: 300px;" />
