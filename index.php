@@ -55,43 +55,41 @@ $authUrl = $client->createAuthUrl();
     <main>
         <!-- Contenido dinámico Principal -->
       <h2 style="text-align: center">Nuestros cursos:</h2>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 1</h3>
-          <p>Contenido de la primera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 2</h3>
-          <p>Contenido de la segunda vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 3</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 4</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 5</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 6</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 7</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 8</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
-        <div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-          <h3>Vista 9</h3>
-          <p>Contenido de la tercera vista.</p>
-        </div>
+      <?php
+      // Conexión a la base de datos
+      $servername = "localhost";
+      $username = "insertData";
+      $password = "11211121aA.,";
+      $dbname = "app1";
+
+      $conn = new mysqli($servername, $username, $password, $dbname);
+
+      // Verificar conexión
+      if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+      }
+
+      // Consultar todos los cursos
+      $sql = "SELECT id, autor, texto, enlaces FROM cursos";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+        echo '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">';
+        while ($row = $result->fetch_assoc()) {
+          echo '<div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">';
+          echo '<h3>' . htmlspecialchars($row["autor"]) . '</h3>';
+          echo '<p>' . htmlspecialchars($row["texto"]) . '</p>';
+          echo '<p><strong>Enlaces:</strong></p>';
+          $enlaces = explode(',', $row["enlaces"]);
+          echo '</div>';
+        }
+        echo '</div>';
+      } else {
+        echo '<p style="text-align: center;">No hay cursos disponibles.</p>';
+      }
+
+      $conn->close();
+      ?>
       </div>
     </div>
     </main>
