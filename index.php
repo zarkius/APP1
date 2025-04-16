@@ -40,7 +40,7 @@ $authUrl = $client->createAuthUrl();
       <nav>
         <ul style="list-style-type: none; padding: 0; margin: 0; text-align: center;">
         <li><a href="#" style="text-decoration: none; color: #333;">Inicio</a></li>
-        <li><a href="#" style="text-decoration: none; color: #333;">Cursos</a></li>
+        <li><a href="crearCurso.php" style="text-decoration: none; color: #333;">Crear Curso</a></li>
         <br>
         <li>
           <a href="<?php echo htmlspecialchars($authUrl); ?>" style="text-decoration: none;">
