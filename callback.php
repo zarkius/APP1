@@ -32,7 +32,7 @@ if (isset($_GET['code'])) {
 
     
     // Redirigir al usuario a la página principal
-    header('Location: profile.php');
+    header('Location: index.php');
     exit();
 }
 ?>
