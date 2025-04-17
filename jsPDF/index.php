@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generar PDF</title>
+    <?php
+    header("Content-Security-Policy: script-src 'self' https://accounts.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://cdnjs.cloudflare.com https://www.googletagmanager.com 'unsafe-inline'; object-src 'none';");
+    ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
@@ -18,7 +21,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-3JVV0PF8GG');
 </script>
     <!-- Formulario para ingresar datos -->
