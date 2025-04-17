@@ -12,6 +12,15 @@
     <h1>Generar PDF desde un formulario</h1>
   </header>
   <main>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3JVV0PF8GG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3JVV0PF8GG');
+</script>
     <!-- Formulario para ingresar datos -->
     <form id="data-form">
       <label for="name"><h3>Pega el texto que desees convertir a <strong>PDF</strong></h3></label><br>
