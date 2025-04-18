@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.yposteriormente\.com [NC]
+RewriteRule ^(.*)$ http://yposteriormente.com/$1 [L,R=301]
