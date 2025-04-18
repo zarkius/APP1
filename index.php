@@ -26,7 +26,7 @@ $authUrl = $client->createAuthUrl();
         font-family: 'Ubuntu', sans-serif;
       }
     </style>
-    <title>Inicio de Sesión con Google</title>
+    <title>Aula Virtual | Home</title>
   </head>
   <body>
     <!-- Google tag (gtag.js) -->
