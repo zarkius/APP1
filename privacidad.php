@@ -20,6 +20,31 @@
     </style>
 </head>
 <body>
+<div id="consent-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f4f4f4; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); padding: 10px; text-align: center; display: none;">
+        <p style="margin: 0; font-size: 14px;">
+          Este sitio utiliza cookies para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestro uso de cookies. 
+          <a href="/privacidad.php" style="text-decoration: none; color: #4285F4;">Más información</a>.
+        </p>
+        <button id="accept-cookies" style="background-color: #4285F4; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 5px;">
+          Aceptar
+        </button>
+      </div>
+      <script nonce="<?php echo $nonce; ?>">
+        document.addEventListener('DOMContentLoaded', function () {
+          const consentBanner = document.getElementById('consent-banner');
+          const acceptButton = document.getElementById('accept-cookies');
+          const consentGiven = localStorage.getItem('cookiesAccepted');
+
+          if (!consentGiven) {
+            consentBanner.style.display = 'block';
+          }
+
+          acceptButton.addEventListener('click', function () {
+            localStorage.setItem('cookiesAccepted', 'true');
+            consentBanner.style.display = 'none';
+          });
+        });
+      </script>
     <h1>Política de Privacidad</h1>
     <p>En <strong>Aula Virtual</strong>, valoramos su privacidad y nos comprometemos a proteger la información personal que comparte con nosotros. Esta política describe cómo recopilamos, usamos y protegemos su información.</p>
 
