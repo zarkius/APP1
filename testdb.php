@@ -1,9 +1,9 @@
 <?php
 // Configuración de la base de datos
 $host = 'localhost';
-$dbname = 'c1app1';
-$username = 'c1insertData';
-$password = '11211121aA.,';
+$dbname = '';
+$username = '';
+$password = '';
 
 try {
     // Crear una conexión PDO
