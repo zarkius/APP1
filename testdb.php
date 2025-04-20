@@ -1,8 +1,8 @@
 <?php
 // Configuración de la base de datos
 $host = 'localhost';
-$dbname = 'app1';
-$username = 'insertData';
+$dbname = 'c1app1';
+$username = 'c1insertData';
 $password = '11211121aA.,';
 
 try {
