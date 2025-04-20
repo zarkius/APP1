@@ -91,9 +91,9 @@ $authUrl = $client->createAuthUrl();
       <?php
       // Conexión a la base de datos
       $servername = "localhost";
-      $username = "c1insertData";
-      $password = "11211121aA.,";
-      $dbname = "c1app1";
+      $username = "";
+      $password = "";
+      $dbname = "";
 
       $conn = new mysqli($servername, $username, $password, $dbname);
 
