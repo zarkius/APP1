@@ -5,6 +5,8 @@ $dbname = $_ENV['DB_NAME'];
 $username = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASSWORD'];  
 
+//CAMBIAR PDO POR MYSQLI
+
 try {
     // Crear una conexión PDO
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -16,3 +18,4 @@ try {
     echo "Error al conectar a la base de datos: " . $e->getMessage();
 }
 ?>
+
