@@ -58,6 +58,7 @@ $authUrl = $client->createAuthUrl();
         <ul style="list-style-type: none; padding: 0; margin: 0; text-align: center;">
         <li><a href="/index.php" style="text-decoration: none; color: #333;">Inicio</a></li>
         <li><a href="/jsPDF/index.php" style="text-decoration: none; color: #333;">Generar PDF</a></li>
+        <li><a href="/phpmailer/index.php">Cuenta</a></li>
         <br>
         <li>
           <a href="<?php echo htmlspecialchars($authUrl); ?>" style="text-decoration: none;">

@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+use Dotenv\Dotenv;
+
+// Cargar las variables de entorno
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 session_start();
 include 'conn.php';
 use PHPMailer\PHPMailer\PHPMailer;
@@ -30,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
         $mail = new PHPMailer(true);
         $mail->isSMTP();
-        $mail->Host = '';
+        $mail->Host = 'smtp.hostinger.com'; // SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = ''; //host email 
-        $mail->Password = ''; // app password of your host email
+        $mail->Username = $_ENV['USERNAME']; //host email 
+        $mail->Password = $_ENV['PASSWORD']; // app password of your host email
         $mail->Port = 465;
         $mail->SMTPSecure = 'ssl';
         $mail->isHTML(true);

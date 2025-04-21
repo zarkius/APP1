@@ -1,4 +1,10 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+use Dotenv\Dotenv;
+
+// Cargar las variables de entorno
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 session_start();
 
 include 'conn.php';
@@ -20,7 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($otp_expiry >= time()) {
             $_SESSION['user_id'] = $data['id'];
             unset($_SESSION['temp_user']);
-            header("Location: dashboard.php");
+            $user = $POST['user'];
+            echo $user;
+            //header("Location: /../index.php");
             exit();
         } else {
             ?>
