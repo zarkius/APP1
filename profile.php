@@ -1,19 +1,34 @@
 <?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+// Cargar las variables de entorno
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// profile.php
 session_start();
 date_default_timezone_set('UTC');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 if (!isset($_SESSION['user'])) {
     header('Location: index.php');
     exit();
 }
 
-
 include('testdb.php');
-$stmt = $pdo->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
-$stmt->execute([$_SESSION['user']['name'], $_SESSION['user']['email']]);
-if ($stmt->rowCount() > 0) {
+
+// Preparar y ejecutar la consulta
+$stmt = $mysqli->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+$stmt->bind_param("ss", $_SESSION['user']['name'], $_SESSION['user']['email']);
+$stmt->execute();
+
+// Verificar si se afectaron filas
+if ($stmt->affected_rows > 0) {
     echo "<br>" . "Usuario guardado o actualizado correctamente.";
 } else {
     echo "<br>" . "No se realizaron cambios en la base de datos.";

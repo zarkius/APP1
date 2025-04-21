@@ -120,9 +120,9 @@ $authUrl = $client->createAuthUrl();
           echo '<div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">';
           echo '<h3>' . htmlspecialchars($row["autor"]) . '</h3>';
           echo '<p>' . htmlspecialchars($row["texto"]) . '</p>';
-          echo '<p><strong>Enlaces:</strong></p>';
-          $enlaces = explode(',', $row["enlaces"]);
-          echo '</div>';
+        echo '<p><strong>Enlaces:</strong></p>';
+        echo '<p>' . htmlspecialchars($row["enlaces"]) . '</p>';
+        echo '</div>';
         }
         echo '</div>';
       } else {
