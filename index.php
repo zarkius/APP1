@@ -1,5 +1,15 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+// Cargar las variables de entorno
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+
+
+require_once __DIR__ . '/testdb.php'; // Asegúrate de que este archivo existe y contiene la conexión a la base de datos
 date_default_timezone_set('UTC');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -88,20 +98,7 @@ $authUrl = $client->createAuthUrl();
       </script>
         <!-- Contenido dinámico Principal -->
       <h2 style="text-align: center">Nuestros cursos:</h2>
-      <?php
-      // Conexión a la base de datos
-      $servername = "localhost";
-      $username = "";
-      $password = "";
-      $dbname = "";
-
-      $conn = new mysqli($servername, $username, $password, $dbname);
-
-      // Verificar conexión
-      if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
-      }
-
+<?php
       // Consultar todos los cursos
       $sql = "SELECT id, autor, texto, enlaces FROM cursos";
       $result = $conn->query($sql);
