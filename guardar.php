@@ -5,16 +5,8 @@
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
 
-        $servername = "localhost";
-        $username = "insertData";
-        $password = "11211121aA.,";
-        $dbname = "app1";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+// Database connection
+include_once __DIR__ . '/testdb.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $autor = $_SESSION['user']['name'];
