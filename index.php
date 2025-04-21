@@ -99,6 +99,17 @@ $authUrl = $client->createAuthUrl();
         <!-- Contenido dinámico Principal -->
       <h2 style="text-align: center">Nuestros cursos:</h2>
 <?php
+      // Conectar a la base de datos
+      $servername = $_ENV['DB_HOST'];
+      $username = $_ENV['DB_USER'];
+      $password = $_ENV['DB_PASSWORD'];
+      $dbname = $_ENV['DB_NAME'];
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      // Verificar la conexión
+      if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+      }
+
       // Consultar todos los cursos
       $sql = "SELECT id, autor, texto, enlaces FROM cursos";
       $result = $conn->query($sql);
