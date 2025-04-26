@@ -122,7 +122,9 @@ $authUrl = $client->createAuthUrl();
           echo '<h3>' . htmlspecialchars($row["autor"]) . '</h3>';
           echo '<p>' . htmlspecialchars($row["texto"]) . '</p>';
         echo '<p><strong>Enlaces:</strong></p>';
-        echo '<p>' . htmlspecialchars($row["enlaces"]) . '</p>';
+
+        $nombre = htmlspecialchars($row["enlaces"]);
+        echo '<a href="' . $nombre . '">' . htmlspecialchars($row["enlaces"]) . '</a>';
         echo '</div>';
         }
         echo '</div>';
