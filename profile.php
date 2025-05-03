@@ -34,6 +34,9 @@ if ($stmt->affected_rows > 0) {
 } else {
     echo "<br>" . "No se realizaron cambios en la base de datos.";
 }
+
+$_SESSION['name'] = $_SESSION['user']['name'];
+$_SESSION['email'] = $_SESSION['user']['email'];
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +47,19 @@ if ($stmt->affected_rows > 0) {
     <title>Perfil del Usuario</title>
 </head>
 <body>
+    <?php
+if ($_SESSION['name'] == true) {
+    mkdir("usuarios/" . $_SESSION['name'], 0777, true);
+    $file = fopen("usuarios/" . $_SESSION['name'] . "/index.php", "w") or die("No se puede abrir el archivo!");
+        $txt =  "<?php\nsession_start();\nif (!isset(\$_SESSION['user'])) {\n    header('Location: ../../index.php');\n    exit();\n}\n?>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Perfil de " . htmlspecialchars($_SESSION['name']) . "</title>\n</head>\n<body>\n    <h1>Bienvenido, " . htmlspecialchars($_SESSION['name']) . "</h1>\n    <p><a href='../../logout.php'>Cerrar sesión</a></p>\n</body>\n</html>";
+    
+    fwrite($file, $txt);
+    fclose($file);
+    header("Location: usuarios/" . $_SESSION['name'] . "/index.php");
+} else {
+    header("Location: index.php");
+}
+?>
     <header>
         <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['user']['name']); ?></h1>
     </header>

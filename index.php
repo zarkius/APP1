@@ -19,7 +19,7 @@ $nonce = base64_encode(random_bytes(16)); // Generar un nonce único
 header("Content-Security-Policy: script-src 'self' https://accounts.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://cdnjs.cloudflare.com https://www.googletagmanager.com 'unsafe-inline'; object-src 'none';");
 $client = new Google_Client();
 $client->setAuthConfig(__DIR__ . '/credentials.json');
-$client->setRedirectUri('https://yposteriormente.com/callback.php');
+$client->setRedirectUri('http://localhost:3000/callback.php');
 $client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
 $client->addScope(Google_Service_Oauth2::USERINFO_PROFILE);
 
