@@ -57,7 +57,6 @@ $authUrl = $client->createAuthUrl();
       <nav>
         <ul style="list-style-type: none; padding: 0; margin: 0; text-align: center;">
         <li><a href="/index.php" style="text-decoration: none; color: #333;">Inicio</a></li>
-        <li><a href="/jsPDF/index.php" style="text-decoration: none; color: #333;">Generar PDF</a></li>
         <li><a href="/phpmailer/index.php">Cuenta</a></li>
         <br>
         <li>
@@ -99,42 +98,7 @@ $authUrl = $client->createAuthUrl();
       </script>
         <!-- Contenido dinámico Principal -->
       <h2 style="text-align: center">Nuestros cursos:</h2>
-<?php
-      // Conectar a la base de datos
-      $servername = $_ENV['DB_HOST'];
-      $username = $_ENV['DB_USER'];
-      $password = $_ENV['DB_PASSWORD'];
-      $dbname = $_ENV['DB_NAME'];
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      // Verificar la conexión
-      if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
-      }
-
-      // Consultar todos los cursos
-      $sql = "SELECT id, autor, texto, enlaces FROM cursos";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-        echo '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">';
-        while ($row = $result->fetch_assoc()) {
-          echo '<div style="background-color: #f9f9f9; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">';
-          echo '<h3>' . htmlspecialchars($row["autor"]) . '</h3>';
-          echo '<p>' . htmlspecialchars($row["texto"]) . '</p>';
-        echo '<p><strong>Enlaces:</strong></p>';
-
-        $nombre = htmlspecialchars($row["enlaces"]);
-        echo '<a href="' . $nombre . '">' . htmlspecialchars($row["enlaces"]) . '</a>';
-        echo '</div>';
-        }
-        echo '</div>';
-      } else {
-        echo '<p style="text-align: center;">No hay cursos disponibles.</p>';
-      }
-
-      $conn->close();
-      ?>
-      </div>
+      <?php cursos(); ?>
     </div>
     </main>
     <footer>
