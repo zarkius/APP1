@@ -1,13 +1,12 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 use Dotenv\Dotenv;
-
+require_once 'conn.php';
 // Cargar las variables de entorno
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 session_start();
 
-include 'conn.php';
 if (!isset($_SESSION['temp_user'])) {
     header("Location: index.php");
     exit();
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unset($_SESSION['temp_user']);
             $user = $POST['user'];
             echo $user;
-            header("Location: /index.php");
+            header("Location: dashboard.php");
             exit();
         } else {
             ?>

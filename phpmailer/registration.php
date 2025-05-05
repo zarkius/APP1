@@ -14,13 +14,13 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
-    $username = $_POST['username'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password
 
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+    $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedPassword')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
@@ -39,7 +39,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
        echo "<script> alert('Registration Failed. Try Again');</script>";
     }
 }
+// Conectar a la base de datos y obtener todos los emails
+$sql = "SELECT email FROM users";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    $emails = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $emails[] = $row['email'];
+    }
+    // Opcional: imprimir los emails para verificar
+    // print_r($emails);
+} else {
+    die("Error al obtener los emails: " . mysqli_error($conn));
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -97,10 +112,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     <div id="container">
         <form method="post" action="registration.php">
             <label for="username">Username:</label><br>
-            <input type="text" name="username" placeholder="Enter Username" required><br><br>
+            <input type="text" name="name" placeholder="Enter Username" required><br><br>
 
             <label for="email">Email:</label><br>
-            <input type="text" name="email" placeholder="Enter Your Email" required><br><br>
+            <?php
+            if (!empty($emails)) {
+                echo '<input type="text" name="email" placeholder="Enter Your Email" required onblur="checkEmail(this.value)"><br><br>';
+                echo '<script>
+                    function checkEmail(email) {
+                        const existingEmails = ' . json_encode($emails) . ';
+                        if (existingEmails.includes(email)) {
+                            const messageDiv = document.createElement("div");
+                            messageDiv.style.color = "red";
+                            messageDiv.style.fontWeight = "bold";
+                            messageDiv.innerHTML = "Email already exists. Redirecting to login in <span id=\"countdown\">5</span> seconds.";
+                            if (!document.querySelector("#emailExistsMessage")) {
+                                messageDiv.id = "emailExistsMessage";
+                                document.querySelector("form").prepend(messageDiv);
+                            }
+                            let countdown = 5;
+                            const interval = setInterval(() => {
+                                countdown--;
+                                document.getElementById("countdown").textContent = countdown;
+                                if (countdown === 0) {
+                                    clearInterval(interval);
+                                    window.location.href = "index.php";
+                                }
+                            }, 1000);
+                        }
+                    }
+                </script>';
+            } else {
+                echo '<input type="text" name="email" placeholder="Enter Your Email" required><br><br>';
+            }
+            ?>
 
             <label for="password">Password:</label><br>
             <input type="password" name="password" placeholder="Enter Password" required><br><br>

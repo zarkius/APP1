@@ -5,43 +5,27 @@ use Dotenv\Dotenv;
 // Cargar las variables de entorno
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
+require_once 'conn.php';
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $user_data = mysqli_fetch_assoc($result);
+    $_SESSION['temp_user'] = [
+        'id' => $user_data['id'],
+        'otp' => $user_data['otp'],
+        'otp_expiry' => $user_data['otp_expiry']
+    ];
+} else {
+    echo "<script>alert('No user found with the provided email.');</script>";
     header("Location: index.php");
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
 
-try {
-    $mysqli = new mysqli($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD'], $_ENV['DB_NAME']);
-    if ($mysqli->connect_error) {
-        throw new Exception("Connection failed: " . $mysqli->connect_error);
-    }
-
-    // Cambiar la consulta para usar ? como marcador de posición
-    $stmt = $mysqli->prepare("SELECT * FROM users WHERE id = ?");
-    if (!$stmt) {
-        throw new Exception("Failed to prepare statement: " . $mysqli->error);
-    }
-
-    // Vincular el parámetro
-    $stmt->bind_param('i', $user_id); // 'i' indica que el parámetro es un entero
-    $stmt->execute();
-
-    // Obtener el resultado
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    if (!$user) {
-        throw new Exception("User not found.");
-    }
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +35,9 @@ try {
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome to the Dashboard, <?php echo htmlspecialchars($user['username']); ?>!</h1>
+    <h1>Welcome to the Dashboard, <?php echo $email; ?>!</h1>
+
+    <a href="../negocio.php">Crear página para tu negocio</a>
     <p><a href="logout.php">Logout</a></p>
 </body>
 </html>

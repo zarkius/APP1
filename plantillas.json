@@ -1,0 +1,5 @@
+{
+    "index": {
+        "contenido": "<?php\n// Página de inicio para el negocio '{{nombre}}'\necho '<h1>Bienvenido a {{nombre}}</h1>';\necho '<p>{{descripcion}}</p>';\n?>"
+    }
+}
