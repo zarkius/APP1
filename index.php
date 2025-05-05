@@ -15,7 +15,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-$nonce = base64_encode(random_bytes(16)); // Generar un nonce único
 header("Content-Security-Policy: script-src 'self' https://accounts.google.com https://www.gstatic.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://cdnjs.cloudflare.com https://www.googletagmanager.com 'unsafe-inline'; object-src 'none';");
 $client = new Google_Client();
 $client->setAuthConfig(__DIR__ . '/credentials.json');
@@ -41,7 +40,7 @@ $authUrl = $client->createAuthUrl();
   <body>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JVV0PF8GG"></script>
-<script nonce="<?php echo $nonce; ?>">
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -80,7 +79,7 @@ $authUrl = $client->createAuthUrl();
           Aceptar
         </button>
       </div>
-      <script nonce="<?php echo $nonce; ?>">
+      <script>
         document.addEventListener('DOMContentLoaded', function () {
           const consentBanner = document.getElementById('consent-banner');
           const acceptButton = document.getElementById('accept-cookies');
